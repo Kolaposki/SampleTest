@@ -127,7 +127,7 @@ module.exports = {
     // http://162.0.233.96/API dev server
     //
     axios: {
-        baseURL: "http://127.0.0.1:9000/",
+        baseURL: "https://3235-102-219-153-218.eu.ngrok.io/",
         //  process.env.BASE_URL || "https://wajeloyalty.website/",
         //'https://wajeloyalty.website/', // 'http://127.0.0.1:8000/', //'http://162.0.233.96/', // ||
         proxy: false,
@@ -138,7 +138,7 @@ module.exports = {
     },
     //environment variables
      env: {
-        BASE_URL: "http://127.0.0.1:9000/",
+        BASE_URL: "https://3235-102-219-153-218.eu.ngrok.io/",
         // "https://wajeloyalty.website//",
         //'https://wajeloyalty.website/', // 'http://127.0.0.1:8000/',//'http://162.0.233.96/' //
     },
