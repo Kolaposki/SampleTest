@@ -116,6 +116,7 @@ module.exports = {
     // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
     plugins: [
         "~/plugins/global.js",
+        "@/plugins/OnesignalSDK.js",
         { src: "~/plugins/library.js", mode: "client" },
     ],
     /**

@@ -162,6 +162,20 @@ export default {
     //   localStorage.removeItem('token')
     //   this.$router.push('/')
     // }
-  }
+  },
+   mounted() {
+  window.OneSignal = window.OneSignal || [];
+ console.log("onesignal ",window.OneSignal);
+  OneSignal.push(function() {
+    OneSignal.init({
+      appId: "b5edfa5a-af42-4350-a476-c2c7470d52e4",
+      safari_web_id: "web.onesignal.auto.548f76b5-1495-4e31-bc8e-b1b76d8ec8fd",
+      notifyButton: {
+        enable: true,
+      },
+      subdomainName: "ntisa",
+    });
+  });
+  },
 }
 </script>
