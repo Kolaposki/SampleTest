@@ -127,7 +127,7 @@ module.exports = {
     // http://162.0.233.96/API dev server
     //
     axios: {
-        baseURL:  process.env.BASE_URL || "https://wajeloyalty.website/",
+        baseURL: "http://127.0.0.1:9000/",
         //  process.env.BASE_URL || "https://wajeloyalty.website/",
         //'https://wajeloyalty.website/', // 'http://127.0.0.1:8000/', //'http://162.0.233.96/', // ||
         proxy: false,
@@ -137,8 +137,8 @@ module.exports = {
         //'https://wajeloyalty.website/' //http://162.0.233.96/'
     },
     //environment variables
-    env: {
-        BASE_URL:"https://wajeloyalty.website/",
+     env: {
+        BASE_URL: "http://127.0.0.1:9000/",
         // "https://wajeloyalty.website//",
         //'https://wajeloyalty.website/', // 'http://127.0.0.1:8000/',//'http://162.0.233.96/' //
     },
