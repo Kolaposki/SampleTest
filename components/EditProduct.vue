@@ -1,0 +1,531 @@
+<template>
+  <!-- <overlay-scrollbars class="main-content-wrap"> -->
+    <!-- <div class="d-flx-alc-jsb page-extras">
+      <p class="fw-medium font-16">
+        <nuxt-link to="/products" class="text-link">
+          <svg>
+            <use href="/uploads/icons.svg#back"></use>
+          </svg>
+          <span class="ml-1 fw-bold co-grey">Back</span>
+        </nuxt-link>
+      </p>
+      <div class="search-filter d-flx-alc-jfe">
+      </div>
+    </div> -->
+
+    <div class="inner-main-wrapper" style="padding: 0">
+      <!-- <div class="d-flx-alc-jsb table-title">
+        <h3 class="section-title">Edit Product</h3>
+      </div> -->
+      <!-- <overlay-scrollbars class="table-wrapper no-deco"> -->
+        <!-- <form class="mt-2" enctype="multipart/form-data" @submit.prevent=""> -->
+          <div class="flex-width-1-2 less-gp">
+            <label  class="form-input">
+              <span class="form-input__label">Select Type</span>
+              <div class="form-input__input">
+                <Select2 v-model="formData.producttype" :options="productTypes"/>
+              </div>
+              <span v-if="errorData.producttype" class="form-input__error-msg">Please select a product type</span>
+            </label>
+
+            <label  class="form-input">
+              <span class="form-input__label">Select Category</span>
+              <div class="form-input__input">
+                <Select2 v-model="formData.categoryID" :options="categories"/>
+              </div>
+              <span v-if="errorData.categoryID" class="form-input__error-msg">Please select a category</span>
+            </label>
+          </div>
+
+          <div class="flex-width-1-2 less-gp">
+            <label  class="form-input">
+              <span class="form-input__label">SKU (Product code)</span>
+              <div class="form-input__input">
+                <input type="text" v-model="formData.productcode" placeholder="">
+              </div>
+              <span v-if="errorData.productcode" class="form-input__error-msg">Please enter a product code</span>
+            </label>
+
+
+            <label  class="form-input">
+              <span class="form-input__label">Name</span>
+              <div class="form-input__input">
+                <input type="text" v-model="formData.productname" placeholder="">
+              </div>
+              <span v-if="errorData.productname" class="form-input__error-msg">Please enter a product name</span>
+            </label>
+          </div>
+
+          <div :class=" formData.producttype == 'stocked_product' ? 'flex-width-1-3 less-gp' : 'flex-width-1-2 less-gp'">
+
+            <label  class="form-input" v-if="formData.producttype == 'stocked_product'">
+              <span class="form-input__label">Stock/ Quantity</span>
+              <div class="form-input__input">
+                <input type="text" :readonly="this.stockqty == this.formData.stockqty && this.producttype == this.formData.producttype" v-model="formData.stockqty" placeholder="">
+              </div>
+              <span v-if="errorData.stockqty" class="form-input__error-msg">Please enter a stock</span>
+            </label>
+
+			<label  class="form-input" v-if="formData.producttype == 'stocked_product'">
+              <span class="form-input__label">Re-order Level<span style="color: red;">*</span></span>
+              <div class="form-input__input">
+                <input type="text" v-model="formData.restocklevel" placeholder="">
+              </div>
+              <span v-if="errorData.restocklevel" class="form-input__error-msg">Please enter a re order stock</span>
+            </label>
+			<!--
+            <label  class="form-input">
+              <span class="form-input__label">Discount (%)</span>
+              <div class="form-input__input">
+                <input type="number" v-model="formData.discount" 
+				onkeypress="return (document.getElementById('discount_price_edit').value.indexOf('.') > 0 ? (document.getElementById('discount_price_edit').value.substr(document.getElementById('discount_price_edit').value.indexOf('.'), 3).length > 2 ? false : true) : false"
+				 id="discount_price_edit"
+				  placeholder="">
+              </div>
+			   <span v-if="errorData.discount" class="form-input__error-msg">Please enter a valid number between 1 and 100</span>
+            </label>
+			-->
+
+          </div>
+
+		  <add-product-feature ref="features" :featuresList="formData.productfeatures" />
+
+          <div  class="flex-width-1-2 less-gp">
+
+            <label  class="form-input">
+              <span class="form-input__label">Branch</span>
+              <div class="form-input__input">
+                <Select2 v-model="formData.branchID" :options="branches"/>
+              </div>
+              <span v-if="errorData.branchID" class="form-input__error-msg">Please select a branch</span>
+            </label>
+
+             <label  class="form-input">
+            <span class="form-input__label"> Tax Inclusive </span>
+            <div class="form-input__input">
+                <Select2 v-model="formData.taxinclusive" :options="taxinclusive" />
+            </div>
+            </label>
+
+            <label  class="form-input">
+              <span class="form-input__label">Expiry Date</span>
+              <div class="form-input__input">
+                <input type="date" v-model="formData.expirationdate" placeholder="">
+              </div>
+              <span v-if="errorData.expirationdate" class="form-input__error-msg">Please select an expiration date</span>
+            </label>
+          </div>
+
+          <label  class="form-input">
+            <span class="form-input__label">Description</span>
+            <div class="form-input__input">
+              <textarea rows="5" v-model="formData.productdescription"></textarea>
+            </div>
+            <span v-if="errorData.productdescription" class="form-input__error-msg">Please enter a product description</span>
+          </label>
+
+		  <!-- <add-product-feature ref="features" :featuresList="formData.productfeatures"/> -->
+
+          <div class="flex-width-1-1 less-gp">
+            <label  class="form-input">
+              <span class="form-input__label">Photo 1 <span style="font-size: smaller;">(400px * 400px)</span></span>
+
+              <image-crop :update="formData.photo" ref="editPhoto1" :pic="'editPhoto1'" @image="photo1 = $event"/>
+              <span v-if="errorData.photo1" class="form-input__error-msg">Photo 1 size must be 400px * 400px</span>
+            </label>
+			</div>
+		  <div class="flex-width-1-1 less-gp">
+            <label  class="form-input">
+              <span class="form-input__label">Photo 2 <span style="font-size: smaller;">(400px * 400px)</span></span>
+
+              <image-crop :update="formData.photo2" ref="editPhoto2" :pic="'editPhoto2'" @image="photo2 = $event"/>
+              <span v-if="errorData.photo2" class="form-input__error-msg">Photo 2 size must be 400px * 400px</span>
+            </label>
+          </div>
+		  <div class="flex-width-1-1 less-gp">
+            <label  class="form-input">
+              <span class="form-input__label">Photo 3 <span style="font-size: smaller;">(400px * 400px)</span></span>
+
+              <image-crop :update="formData.photo3" ref="editPhoto3" :pic="'editPhoto3'" @image="photo3 = $event"/>
+              <span v-if="errorData.photo3" class="form-input__error-msg">Photo 3 size must be 400px * 400px</span>
+            </label>
+			</div>
+		  <div class="flex-width-1-1 less-gp">
+            <label  class="form-input">
+              <span class="form-input__label">Photo 4 <span style="font-size: smaller;">(400px * 400px)</span></span>
+
+              <image-crop :update="formData.photo4" ref="editPhoto4" :pic="'editPhoto4'" @image="photo4 = $event"/>
+              <span v-if="errorData.photo4" class="form-input__error-msg">Photo 4 size must be 400px * 400px</span>
+            </label>
+          </div>
+
+          <div class="d-flx-alc-jfe mt-3">
+            <button @click="cancelForm" type="button" class="btn btn-no-fill">
+              Cancel
+            </button>
+            <button type="submit" id="editProductBtn" class="btn btn--primary ml-1" @click="saveEditProduct">
+              + Update product
+            </button>
+          </div>
+        <!-- </form> -->
+      <!-- </overlay-scrollbars> -->
+    </div>
+  <!-- </overlay-scrollbars> -->
+</template>
+<script>
+import AddProductFeature from './AddProductFeature.vue';
+import ImageCrop from "./imageCrop";
+export default {
+	components: {ImageCrop, AddProductFeature},
+	layout: 'main',
+	data: () => ({
+		branchID: '',
+		stockqty: '',
+		producttype: '',
+		formData: {
+			merchID: '',
+			productcode: '',
+			productname: '',
+            taxinclusive:'',
+			productdescription: '',
+			stockqty: '',
+			sellingprice: '',
+			expirationdate: '',
+			producttype: '',
+			discount: '',
+			productfeatures: [{
+				price: '',
+				featureID: ''
+			}],
+			restocklevel: 0,
+			branchID: '',
+			categoryID: '',
+			id: ''
+		},
+		nonstockedForm: false,
+		stockedForm: false,
+		serviceForm: false,
+		productTypes: [
+			{id: 'nonstocked_product', text: 'Non-stocked product'},
+			{id: 'stocked_product', text: 'Stocked product'},
+			{id: 'service', text: 'Service'}
+		],
+        taxinclusive: [
+            { id: true, text: "Yes" },
+            { id: false, text: "No" }
+        ],
+		branches: [],
+		categories: [],
+		productDescription: '',
+		errorData: {
+			productcode: false,
+			productname: false,
+			productdescription: false,
+			stockqty: false,
+			sellingprice: false,
+			expirationdate: false,
+			producttype: false,
+			branchID: false,
+			restocklevel: false,
+			discount: false,
+			categoryID: false,
+			photo1: false,
+			photo2: false,
+			photo3: false,
+			photo4: false
+		},
+		photo1: '',
+		photo2: '',
+		photo3: '',
+		photo4: '',
+		
+	}),
+	methods: {
+		async saveEditProduct() {
+
+			//this.clearValidation()
+		
+			if(this.$refs.features.productFeatures[0].featureID == '') {
+				this.formData.sellingprice = this.$refs.features.productFeatures[0].price
+			} else {
+				this.formData.sellingprice = 0;
+			}
+			if(this.validateFormData()) {
+				return;
+			}
+
+			let expiration_date = this.formData.expirationdate == null || this.formData.expirationdate == '' ? '' : this.formData.expirationdate;
+      
+
+			let data = new FormData()
+
+			if(this.formData.restocklevel == ''){
+				this.formData.restocklevel = 0;
+			}
+
+			data.append('merchID', this.formData.merchID)
+			data.append('productcode', this.formData.productcode)
+			data.append('productname', this.formData.productname)
+			data.append('productdescription', this.formData.productdescription)
+			if (this.stockqty !=  this.formData.stockqty){
+				data.append('stockqty', this.formData.stockqty)
+			} else {
+				data.append('stockqty', 0)
+			}
+			data.append('discount', this.formData.discount)
+			data.append('sellingprice', this.formData.sellingprice)
+            data.append("taxinclusive", this.formData.taxinclusive);
+			data.append('expiration_date', expiration_date)
+			data.append('producttype', this.formData.producttype)
+			data.append('branchID', this.formData.branchID)
+			data.append('categoryID', this.formData.categoryID)
+			data.append('restocklevel', this.formData.restocklevel)
+			if(this.$refs.features.productFeatures.length > 1) {
+				if(this.$refs.features.productFeatures[0].featureID == '') {
+					this.$refs.features.productFeatures.splice(0, 1)
+				}
+				data.append('productfeatures', JSON.stringify(this.$refs.features.productFeatures))
+			} else {
+				data.append('productfeatures', JSON.stringify([]))
+			}
+			await this.$refs.editPhoto1.getImage();
+			await this.$refs.editPhoto3.getImage();
+			await this.$refs.editPhoto4.getImage();
+			await this.$refs.editPhoto2.getImage();
+			if(this.photo1.length > 0 || this.photo1 != '') {
+				data.append('photo', this.photo1, 'file1.' + this.photo1.type.split('/')[1])
+				this.formData.photo = this.photo1;
+			}
+			if(this.photo2.length > 0  || this.photo2 != '') {
+				data.append('photo2', this.photo2, 'file2.' + this.photo2.type.split('/')[1])
+				this.formData.photo2 = this.photo2;
+			}
+			if(this.photo3.length > 0  || this.photo3 != '') {
+				data.append('photo3', this.photo3, 'file3.' + this.photo3.type.split('/')[1])
+				this.formData.photo3 = this.photo3;
+			}
+			if(this.photo4.length > 0  || this.photo4 != '') {
+				data.append('photo4', this.photo4, 'file4.' + this.photo4.type.split('/')[1])
+				this.formData.photo4 = this.photo4;
+			}
+			data.append('id', this.formData.id)
+			$('#editProductBtn').attr('disabled', true).html('Updating..please wait')
+			this.$store.dispatch('products/editProduct', data)
+				.then(res =>{
+					$('#editProductBtn').attr('disabled', false).html('+ Update product')
+					if(res.data.status) {
+						this.$toast.success('Product was successfully updated')
+						this.clearForm()
+						location.reload();
+						this.$emit('refresh');
+						UIkit.modal('#edit-product').toggle();
+						// this.$parent.listProducts()
+						// this.$router.push('/products')
+						return
+					}
+
+					this.$toast.error('An error occurred.')
+				}).catch(err =>{
+					this.$toast.error('An error occurred.')
+					$('#editProductBtn').attr('disabled', false).html('+ Update product')
+				})
+		},
+		clearValidation() {
+			this.errorData = {
+				productcode: false,
+				productname: false,
+				productdescription: false,
+				stockqty: false,
+				sellingprice: false,
+				discount: false,
+				expirationdate: false,
+				producttype: false,
+				branchID: false,
+				discount: false,
+				restocklevel: false,
+				categoryID: false,
+				photo1: false,
+				photo2: false,
+				photo3: false,
+				photo4: false
+			}
+		},
+		validateFormData() {
+			if(this.formData.producttype === ''){
+				this.errorData.producttype = true
+				return true
+			}
+
+			/*if(this.formData.discount === '' ||  0 > Number(this.formData.discount) || Number(this.formData.discount) > 100 ){
+				this.errorData.discount = true
+				return true
+			}
+			*/
+
+			if(this.formData.categoryID === '') {
+				this.errorData.categoryID = true
+				return true
+			}
+
+			// if(this.formData.productcode === ''){
+			// 	this.errorData.productcode = true
+			// 	return true
+			// }
+
+			if(this.formData.productname === ''){
+				this.errorData.productname = true
+				return true
+			}
+
+			if(this.formData.producttype === 'stocked_product' && this.formData.stockqty === ''){
+				this.errorData.stockqty = true
+				return true
+			}
+			
+
+			// if(this.formData.restocklevel === ''){
+			// 	this.errorData.restocklevel = true
+			// 	return true
+			// }
+			if(this.formData.producttype === 'stocked_product' && (this.formData.restocklevel == ''  || this.formData.restocklevel == 0)){
+				this.errorData.restocklevel = true
+				return true
+			}
+
+			if(this.formData.sellingprice === ''){
+				this.errorData.sellingprice = true
+				return true
+			}
+
+			if(this.formData.branchID === ''){
+				this.errorData.branchID = true
+				return true
+			}
+
+			// if(this.formData.expirationdate === '') {
+			// 	this.errorData.expirationdate = true
+			// 	return true
+			// }
+
+			if(this.formData.productdescription === '' || this.formData.productdescription === undefined){
+				this.errorData.productdescription = true
+				return true
+			}
+
+			return false
+		},
+		clearForm() {
+			this.formData = {
+				productcode: '',
+				productname: '',
+				productdescription: '',
+				stockqty: '',
+				sellingprice: '',
+				expirationdate: '',
+				discount: '',
+				producttype: '',
+				productfeatures: [
+					{
+						featureID: '',
+						price: ''
+					}
+				],
+				restocklevel: 0,
+				// branchID: '',
+				categoryID: '',
+				id: ''
+			}
+		},
+		cancelForm() {
+		  this.clearForm()
+		  UIkit.modal('#edit-product').toggle();
+			// this.$router.push('/products')
+		},
+		listBranches() {
+			let vm = this
+			this.$store.dispatch('branches/listBranches', this.formData.merchID)
+				.then(res =>{
+					let branchArray = []
+					res.data.data.forEach(function(r){
+						let data = {
+							id: r.id,
+							text: r.branchname
+						}
+						if (vm.isSupervisor) {
+							if(data.id == vm.user.branchID){
+								branchArray.push(data)
+							}
+
+						} else {
+							branchArray.push(data)
+						}
+					})
+					this.branches = branchArray
+				})
+		},
+		listProductCategory() {
+			this.$store.dispatch('category/getCategories', this.formData.merchID)
+				.then(res =>{
+					let catArray = []
+					res.data.data.forEach(function(r){
+						let data = {
+							id: r.id,
+							text: r.categoryname
+						}
+						
+						catArray.push(data)
+						
+					})
+					this.categories = catArray
+				})
+		},
+		attachedProducts() {
+		  this.clearForm()
+			let product = JSON.parse(localStorage.getItem('product_data'))
+			// console.log(product)
+			if(product.productfeatureinfo.length <= 0 || Number(product.sellingprice) > 0){
+				product.productfeatureinfo.unshift({
+					price: product.sellingprice,
+					featureID: ''
+				});
+			}
+			this.stockqty = product.stockqty
+			this.producttype = product.producttype
+		  this.formData = {
+				merchID: product.merchID,
+				productcode: product.productcode != null && product.productcode != 'null' ? product.productcode : '' ,
+				productname: product.productname,
+				productdescription: product.productdescription,
+				stockqty: product.stockqty,
+				sellingprice: product.sellingprice,
+				expirationdate: product.expiration_date,
+                taxinclusive:product.taxinclusive,
+				producttype: product.producttype,
+				branchID: product.branchID,
+				discount: product.discount,
+				restocklevel: product.restocklevel != null ? product.restocklevel : 0,
+				productfeatures: product.productfeatureinfo,
+				categoryID: product.categoryID,
+				id: product.id,
+				photo : product.photo,
+				photo2 : product.photo2,
+				photo3 : product.photo3,
+				photo4 : product.photo4
+			}
+			this.$refs.features.productFeatures = this.formData.productfeatures;
+			this.branchID =  product.branchID
+		}
+	},
+	// created () {
+		
+	// },
+	mounted() {
+		// this.attachedProducts()
+		this.formData.merchID = this.user.role ? this.user.merchID : this.user.id
+		this.listBranches()
+		this.listProductCategory()
+		
+		// console.log(this.formData);
+	}
+}
+</script>

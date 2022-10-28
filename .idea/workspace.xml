@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="908d5e22-2bea-49db-a0ea-772bb02496df" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/components/imageCrop.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/css/croppie.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/js/croppie.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/js/croppie.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/MainMenu.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/MainMenu.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nuxt.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/nuxt.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/branch/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/branch/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/campaigns/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/campaigns/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/categories/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/categories/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/customers/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/customers/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/dashboard/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/dashboard/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/drivers/details/_id.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/riders/details/_id.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/drivers/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/riders/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/forgot-password/reset.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/forgot-password/reset.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/inventory/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/inventory/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/inventory/purchase-order/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/inventory/purchase-order/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/orders/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/orders/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/products/add/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/products/add/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/products/edit/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/products/edit/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/products/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/products/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/push-notifications/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/push-notifications/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/reports/all-sales/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/reports/all-sales/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/reports/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/reports/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/reports/inventory/_name.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/reports/inventory/_name.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/reports/inventory/expired-products/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/reports/inventory/expired-products/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/reports/sales-report/_name.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/reports/sales-report/_name.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/staff/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/staff/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/subscriptions/new/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/subscriptions/new/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugins/global.js" beforeDir="false" afterPath="$PROJECT_DIR$/plugins/global.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/style.css" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Vue Single File Component" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1pdANsdDuvnBHbluipgh2utZxtm" />
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/static/js" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Projects\NTISA-Merchant-Frontend\static\js" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Projects\NTISA-Merchant-Frontend\static\css" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="908d5e22-2bea-49db-a0ea-772bb02496df" name="Default Changelist" comment="" />
+      <created>1615502563249</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1615502563249</updated>
+      <workItem from="1615502567816" duration="544000" />
+      <workItem from="1616062561807" duration="19722000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

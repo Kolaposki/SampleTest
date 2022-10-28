@@ -1,0 +1,15 @@
+# dependencies
+node_modules
+
+# logs
+npm-debug.log
+
+# Nuxt build
+.nuxt
+
+# Nuxt generate
+dist/win-unpacked
+dist/*.exe
+
+# Mac OS
+.DS_Store
