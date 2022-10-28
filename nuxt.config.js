@@ -118,7 +118,7 @@ module.exports = {
         "~/plugins/global.js",
 //         "~/plugins/OnesignalSDK.js",
         { src: "~/plugins/library.js", mode: "client" },
-        { src: "~/plugins/OnesignalSDK.js", mode: "client" },
+//         { src: "~/plugins/OnesignalSDK.js", mode: "client" },
     ],
     /**
      * Axios module
