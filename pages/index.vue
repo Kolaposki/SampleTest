@@ -164,6 +164,10 @@ export default {
     // }
   },
    mounted() {
+    let recaptchaScript = document.createElement('script')
+      recaptchaScript.setAttribute('src', 'https://cdn.onesignal.com/sdks/OneSignalSDK.js')
+      document.head.appendChild(recaptchaScript);
+      
   window.OneSignal = window.OneSignal || [];
  console.log("onesignal ",window.OneSignal);
   OneSignal.push(function() {
