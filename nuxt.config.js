@@ -127,7 +127,7 @@ module.exports = {
     // http://162.0.233.96/API dev server
     //
     axios: {
-        baseURL: "16ee-62-173-44-154.eu.ngrok.io/",
+        baseURL: "https://16ee-62-173-44-154.eu.ngrok.io/",
 //          headers : {common: {'Access-Control-Allow-Origin' : '*'}},
         //  process.env.BASE_URL || "https://wajeloyalty.website/",
         //'https://wajeloyalty.website/', // 'http://127.0.0.1:8000/', //'http://162.0.233.96/', // ||
