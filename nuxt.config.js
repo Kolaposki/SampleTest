@@ -127,7 +127,7 @@ module.exports = {
     // http://162.0.233.96/API dev server
     //
     axios: {
-        baseURL: process.env.BASE_URL || "https://16ee-62-173-44-154.eu.ngrok.io/",
+        baseURL: process.env.BASE_URL || "https://ntisa-api.wajesmarthrms.website/",
 //          headers : {common: {'Access-Control-Allow-Origin' : '*'}},
         //  process.env.BASE_URL || "https://wajeloyalty.website/",
         //'https://wajeloyalty.website/', // 'http://127.0.0.1:8000/', //'http://162.0.233.96/', // ||
@@ -139,7 +139,7 @@ module.exports = {
     },
     //environment variables
      env: {
-        BASE_URL: "https://16ee-62-173-44-154.eu.ngrok.io/",
+        BASE_URL: "https://ntisa-api.wajesmarthrms.website/",
         // "https://wajeloyalty.website//",
         //'https://wajeloyalty.website/', // 'http://127.0.0.1:8000/',//'http://162.0.233.96/' //
     },
